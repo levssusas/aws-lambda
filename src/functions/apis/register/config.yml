@@ -1,0 +1,28 @@
+register:
+  handler: src/functions/apis/register/handler.execute
+  events:
+    - http:
+        path: /register
+        method: post
+        timeout: 300
+        cors: true
+
+# test:
+#   handler: src/functions/apis/register/handler.send_email
+#   events:
+#     - http:
+#         path: /email
+#         method: post
+#         timeout: 300
+#         cors: true
+
+  environment:
+    MYSQLDB_URL: ${self:custom.MYSQLDB_URL}
+    MYSQLDB_NAME: ${self:custom.MYSQLDB_NAME}
+    MYSQLDB_USERNAME: ${self:custom.MYSQLDB_USERNAME}
+    MYSQLDB_PASSWORD: ${self:custom.MYSQLDB_PASSWORD}
+    MYSQLDB_PORT: ${self:custom.MYSQLDB_PORT}
+    WALLET_URL: ${self:custom.WALLET_URL}
+    OTP_URL: ${self:custom.OTP_URL}
+    CAAS_KEY: ${self:custom.CAAS_KEY}
+    CAAS_SECRET: ${self:custom.CAAS_SECRET}

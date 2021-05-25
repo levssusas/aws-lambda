@@ -36,3 +36,9 @@ CARBON_TIMEZONE: ${env:CARBON_TIMEZONE}
 #  type: TOKEN
 #  identitySource: method.request.header.Authorization
 #  identityValidationExpression: Bearer (.*)
+
+#OTP
+WALLET_URL: ${env:WALLET_URL}
+OTP_URL: ${env:OTP_URL}
+CAAS_KEY: ${env:CAAS_KEY}
+CAAS_SECRET: ${env:CAAS_SECRET}
