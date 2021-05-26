@@ -17,7 +17,7 @@ export class MobileExistError {
     public message = 'Mobile already exists';
 }
 
-export class SeedError {
-    public code = 400 ;
-    public message = 'Bad Request';
+export class Error {
+    public code = 500 ;
+    public message = 'Something went wrong!';
 }

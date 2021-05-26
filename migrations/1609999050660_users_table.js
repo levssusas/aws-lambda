@@ -8,6 +8,8 @@ const up =
     '  `password` TEXT NOT NULL, ' +
     '  `log_attempts` BOOLEAN NOT NULL DEFAULT 0, ' +
     '  `locked_until` DATETIME NULL, ' +
+    '  `email_verified_at` DATETIME NOT NULL DEFAULT NOW(),  ' +
+    '  `mobile_verified_at` DATETIME NOT NULL DEFAULT NOW(),  ' +
     '  `created_at` DATETIME NOT NULL DEFAULT NOW(),  ' +
     '  `updated_at` DATETIME NOT NULL DEFAULT NOW(), ' +
     '  `deleted_at` DATETIME NULL, ' +

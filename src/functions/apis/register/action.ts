@@ -1,12 +1,15 @@
 import { Connection } from 'typeorm';
 import { UserRepository } from '../../../repositories/UserRepository';
 import { UserModel } from '../../../models/UserModel';
-import { EmailExistError, MobileExistError, SeedError } from './responses';
+import { EmailExistError, MobileExistError, Error } from './responses';
 import * as bcrypt from 'bcrypt';
+import { SendOtpService } from '../../../services/SendOtpService';
+// import axios, { AxiosInstance } from 'axios';
 
 export class RegisterAction {
     private connection: Connection;
     private repository: UserRepository;
+    // private services: SendOtpService;
 
     constructor(connection: Connection) {
         this.connection = connection;
@@ -20,6 +23,11 @@ export class RegisterAction {
         const mobileExist = await this.repository.checkUserMobile(mobile);
         if (mobileExist) throw new MobileExistError();
 
+        // PUBLIC OTP
+        const otp = new SendOtpService(process.env.CAAS_SECRET, process.env.CAAS_KEY);
+        const resultEmail = await otp.sendEmail(email);
+        if (!resultEmail) throw new Error();
+
         const salt = bcrypt.genSaltSync(5);
         const hash = await bcrypt.hash(password, salt);
 
@@ -29,11 +37,12 @@ export class RegisterAction {
             mobile,
             password: hash,
         }).save();
+
     }
 
     async getRandom(): Promise<UserModel> {
         const user = await this.repository.getRandomUser();
-        if (!user) throw new SeedError();
+        if (!user) throw new Error();
         return user;
     }
 }
