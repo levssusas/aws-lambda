@@ -9,4 +9,8 @@ export class UserRepository extends Repository<UserModel> {
             .orWhere('users.mobile = :username', { username })
             .getOne();
     }
+
+    async addLoginAttemptByUserName(username: string): Promise<null | undefined> {
+
+    }
 }
