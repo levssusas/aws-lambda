@@ -14,7 +14,7 @@ export async function execute(event: ApiGatewayEvent): Promise<APIHttpResponse> 
         const connection = await Databases.getConnection();
         const action = new AuthAction(connection);
         const result = await action.execute(request.username, request.password);
-        
+
         return API_RESPONSE({
             ...Responses.STATUS_200,
             user: {

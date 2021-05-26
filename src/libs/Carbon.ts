@@ -19,7 +19,7 @@ export class Carbon {
         return moment().subtract(1, 'day');
     }
 
-    static parse(date: string, format = ''): moment.Moment {
+    static parse(date: any, format = ''): moment.Moment {
         return moment(date, format);
     }
 

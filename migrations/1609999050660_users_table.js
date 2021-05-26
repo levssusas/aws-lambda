@@ -6,7 +6,7 @@ const up =
     '  `email` VARCHAR(50) NOT NULL, ' +
     '  `mobile` VARCHAR(11) NOT NULL, ' +
     '  `password` TEXT NOT NULL, ' +
-    '  `log_attemps` BOOLEAN NOT NULL DEFAULT 0, ' +
+    '  `log_attempts` BOOLEAN NOT NULL DEFAULT 0, ' +
     '  `locked_until` DATETIME NULL, ' +
     '  `created_at` DATETIME NOT NULL DEFAULT NOW(),  ' +
     '  `updated_at` DATETIME NOT NULL DEFAULT NOW(), ' +
