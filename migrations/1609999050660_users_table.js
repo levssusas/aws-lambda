@@ -6,9 +6,10 @@ const up =
     '  `email` VARCHAR(50) NOT NULL, ' +
     '  `mobile` VARCHAR(11) NOT NULL, ' +
     '  `password` TEXT NOT NULL, ' +
+    '  `log_attempts` BOOLEAN NOT NULL DEFAULT 0, ' +
+    '  `locked_until` DATETIME NULL, ' +
     '  `created_at` DATETIME NOT NULL DEFAULT NOW(),  ' +
     '  `updated_at` DATETIME NOT NULL DEFAULT NOW(), ' +
-    '  `expired_at` DATETIME NOT NULL DEFAULT DATE_ADD(NOW(), INTERVAL 1 HOUR),  ' +
     '  `deleted_at` DATETIME NULL, ' +
     '  PRIMARY KEY (`id`), ' +
     '  UNIQUE INDEX `email` (`email` ASC), ' +

@@ -11,3 +11,8 @@ export class AuthAccessDenied {
     public code = 401;
     public message = 'Invalid username and password';
 }
+
+export class AuthMaxTries {
+    public code = 423;
+    public message = 'Account have reach max tries, Try again in 10 minutes.';
+}

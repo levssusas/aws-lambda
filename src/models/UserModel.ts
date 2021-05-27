@@ -27,4 +27,15 @@ export class UserModel extends Model {
         type: 'text',
     })
     public password: string;
+
+    @Column({
+        type: 'int',
+    })
+    public log_attempts: number;
+
+    @Column({
+        type: 'text',
+        nullable: true,
+    })
+    public locked_until: string | null;
 }
