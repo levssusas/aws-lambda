@@ -1,0 +1,28 @@
+@startuml
+User -> Register: register(first_name, last_name, email, mobile, password)
+
+Register -> DB: Check if email exist
+
+alt Email Exist
+Register -> User: 409: Email already exist
+end
+
+Register -> DB: Check if mobile exist
+alt Mobile Exist
+Register -> User: 409: Mobile already exist
+end
+
+Register -> DB: Validate errors
+alt Validate
+Register -> User: 422: Parameter errors
+end
+
+Register -> OTP: Axios post request
+alt Send OTP Email
+Register -> User: 500: Something went wrong
+end
+
+Register -> DB: insertUser(name, email, mobile, password)
+
+Register -> User: 200: Registration Successful
+@enduml
